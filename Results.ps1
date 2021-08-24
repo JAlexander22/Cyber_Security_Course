@@ -16,3 +16,4 @@ Write-Host $SMUL
 Write-Host $FIRST_NUM "/" $SECOND_NUM "=" $DIV
 Write-Host $DIV
 
+Write-Host "Testing 1,2,3"
