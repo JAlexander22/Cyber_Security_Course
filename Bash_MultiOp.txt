@@ -1,0 +1,28 @@
+
+echo "Enter first Number"
+read First_Num
+echo "Enter Second Number"
+read Second_Num
+echo "________________________"
+
+Sum=$(($First_Num+$Second_Num))
+Mul=$(($First_Num*$Second_Num))
+Sub=$(($First_Num-$Second_Num))
+if [[ $First_Num -ne 0 ]] && [ $Second_Num -ne 0 ]]
+then
+Div=$(($First_Num/$Second_Num))
+fi
+echo $First_Num "+" $Second_Num "=" $Sum
+echo $First_Num "*" $Second_Num "=" $Mul
+echo $First_Num "-" $Second_Num "=" $Sub
+if [[ $First_Num -eq 0 ]] || [[ $Second_Num -eq 0 ]]
+then
+echo "you can't divide by 0"
+else
+echo $First_Num "/" $Second_Num "=" $Div
+fi
+
+
+
+
+
