@@ -1,0 +1,48 @@
+read -p "Enter username : " USERNAME
+read -s -p "Enter password: " PASSWORD
+echo "*****"
+read -p "Enter a Directory name: " DIRECTORY
+echo "${PWD}"
+mkdir $DIRECTORY
+cd ./$DIRECTORY/
+touch cyber.log
+chmod 700 cyber.log
+echo ${PWD} >> cyber.log
+echo $(date) >> cyber.log
+USER=$(stat -c '%U' ${PWD})
+echo $USER >> cyber.log
+echo $USERNAME >> cyber.log
+echo $PASSWORD >> cyber.log
+while true; do
+        read  -p "Enter number of packages you want to install: "  PACKAGE_NUMBER
+        if ! [[ "$PACKAGE_NUMBER" =~ ^[0-9]+$ ]]
+                then
+                        echo "Sorry numbers only"
+        else
+                break
+        fi
+
+done
+
+echo $PACKAGE_NUMBER >> cyber.log
+arrVar=()
+echo "--------------------"
+for i in $( eval echo {1..$PACKAGE_NUMBER} );
+        do
+                read -p "What  packages do you want to install? " temp
+                for j in {$PACKAGE_NUMBER};
+                        do
+                                arrVar+=($temp)
+                        done   
+
+        done
+
+for value in "${arrVar[@]}"
+        do
+                sudo apt-get install $value -y 
+                touch $value"_"
+                dpkg -s $value >> $value"_"
+                cat $value"_" >> ${PWD}/$DIRECTORY
+        done
+
+echo "${arrVar[@]}" >> cyber.log

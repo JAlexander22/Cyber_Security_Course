@@ -23,6 +23,3 @@ echo $First_Num "/" $Second_Num "=" $Div
 fi
 
 
-
-
-
