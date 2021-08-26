@@ -1,0 +1,31 @@
+                                                                                   
+mkdir processes
+cd processes
+touch test.txt 
+
+((maxtime = 5))
+while [[ "$(date +%S)" != "00" ]]; do true; done
+
+while true; do
+    
+
+    sleep 30 &
+
+   
+
+    ((delay = RANDOM % maxtime + 1))
+    ((maxtime += 1))
+    echo "$(date) Sleeping for ${delay} seconds (max ${maxtime})."
+    
+    sudo ps -a > test.txt
+    cat test.txt
+    echo $(date) >> test.txt
+
+    [[ ${delay} -gt 30 ]] && echo
+    sleep ${delay}
+
+    
+
+    wait
+done
+
