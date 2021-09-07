@@ -1,23 +1,4 @@
-def add(a, b):
-    return a + b
-
-def sub(a, b):
-    return a - b
-
-def mul(a, b):
-    return a * b
-
-def div(a ,b):
-    try:
-        return a / b
-    except ZeroDivisionError as exception_zero:
-        print(exception_zero)
-        return "No Answer Given"
-    finally:
-        print("Let's carry on")
-
-
-
+import calculator_module
 
 i = 1
 while i != 0:
@@ -25,11 +6,17 @@ while i != 0:
         number1 = int(input("What's your first number?: "))
         number2 = int(input("What's your second number?: "))
 
+        add_value = calculator_module.add(number1, number2)
+        print(number1, "+", number2, "=", add_value)
 
-        print(number1, "+", number2, "=", add(number1,number2))
-        print(number1, "-", number2, "=", sub(number1, number2))
-        print(number1, "*", number2, "=", mul(number1, number2))
-        print(number1, "/", number2, "=", div(number1, number2))
+        sub_value = calculator_module.sub(number1, number2)
+        print(number1, "-", number2, "=", sub_value)
+
+        mul_value = calculator_module.mul(number1, number2)
+        print(number1, "*", number2, "=", mul_value)
+
+        div_value = calculator_module.div(number1, number2)
+        print(number1, "/", number2, "=", div_value)
 
 
         again = str(input("Want to continue?(yes/no): "))
